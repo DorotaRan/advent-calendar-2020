@@ -17,23 +17,23 @@ const gifts = [
 let daysDOM = [];
 let id;
 let day;
+let giftContainer = document.querySelector('#giftContainer');
+giftContainer.className=('');
 
 
 function selectAdventDay() {
-    let days = [...document.querySelectorAll(".day")];
+    let days = [...document.querySelectorAll('.day')];
     daysDOM = days;
     days.forEach(day => {
-        id = day.dataset.id;
-        day.addEventListener("click", event => {
-            console.log(event.target.id)
-            event.target.disabled = true;
-            let giftContainer = document.querySelector('#giftContainer');
+        day.addEventListener('click', event => {    
+            event.target.className=('past-date')
+            giftContainer.className=('gift-container');
             let gift = document.createElement('p');
-            gift.innerText = gifts[""];
+            giftContainer.appendChild(gift);
             let randomIndexFromZeroToFivteen = parseInt(Math.random() * 10 % gifts.length);
             gift.innerText = gifts[randomIndexFromZeroToFivteen];
-            giftContainer.appendChild(gift);
         })
     })
 };
+
 selectAdventDay()
