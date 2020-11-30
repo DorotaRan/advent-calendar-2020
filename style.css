@@ -82,7 +82,7 @@ h2 > i {
     position: relative;
 }
   
-.day-container .day {
+.day {
     position: absolute;
     width: 100%;
     height: 100%;
