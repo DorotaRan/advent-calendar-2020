@@ -26,27 +26,30 @@ function selectAdventDay() {
     daysDOM = days;
     days.forEach(day => {
          day.addEventListener('click', () => {  
-            day.className=('past-date');
+            day.className=('clicked-day');
             giftContainer.className=('gift-container');
             let gift = document.createElement('p');
             giftContainer.appendChild(gift);
             let randomIndexFromZeroToFivteen = parseInt(Math.random() * 10 % gifts.length);
             gift.innerText = gifts[randomIndexFromZeroToFivteen];
-            // localStorage.setItem('day', JSON.stringify(day.id) )
-            function selected(day) {
-                // this.clear();
-                day.style.textDecoration = 'line-through';
-                window.localStorage.setItem('textDecoration', 'line-through');
+
+            if (day.style.textDecoration == 'line-through'){
+                day.removeAttribute('style');
+                localStorage.setItem(day.id, false);
             }
-            selected()
+            else {
+                day.style.textDecoration = 'line-through'
+                localStorage.setItem(day.id, true);
+            }
         })
     })
 };
-
-window.onload = function() {
-    if (window.localStorage.getItem('textDecoration')) {
-        document.querySelector('.day').style.textDecoration = window.localStorage.getItem('textDecoration')
+Array.from(document.getElementsByClassName('day')).map(day => {
+	if (localStorage.getItem(day.id) == 'true') {
+        day.style.textDecoration = 'line-through';
+        day.style.color = 'rgb(63, 73, 80)';
     }
-}
+});
+
 
   
