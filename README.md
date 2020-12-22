@@ -1,5 +1,4 @@
-﻿# advent-calendar-2020 (in progress)
-
+﻿# advent-calendar-2020
 
 Each day have the small gift hidden. It will be revealed on click.
 
